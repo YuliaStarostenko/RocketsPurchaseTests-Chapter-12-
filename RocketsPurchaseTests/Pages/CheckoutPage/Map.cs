@@ -36,7 +36,6 @@ namespace RocketsPurchaseTests.Pages.CheckoutPage
         public IWebElement NavMenuButtonByName(string buttonName)
         {
             return WaitAndFindElement(By.XPath($"//ul[@class='nav-menu']//a[text()='{buttonName}']"));
-        }
-            
+        }    
     }
 }

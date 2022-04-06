@@ -25,6 +25,5 @@ namespace RocketsPurchaseTests.Pages.CartPage
             UpdateCartButton.Click();
             WaitForAjax();
         }
-
     }
 }
