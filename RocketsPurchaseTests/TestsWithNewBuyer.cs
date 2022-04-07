@@ -36,13 +36,15 @@ namespace RocketsPurchaseTests
         }
 
         [Test]
-        public void PurchaseARocketByNameWithANewBuyer()
+        public void PurchaseRocket_WithNewBuyer()
         {
-            _mainPage.AddARocketToTheCartByRocketName("Falcon 9");
+            var productName = "Falcon 9";
+
+            _mainPage.GoTo();
+            _mainPage.AddARocketToCart(productName);
             _cartPage.ApplyCoupon("happybirthday");
-            _cartPage.AssertCouponAppliedMessageAppears();
-            _cartPage.AssertTotalAmountIsCorrect("54.00€");
-            _cartPage.InsertNeededQuantityToCart("3");
+            _cartPage.AssertCouponAppliedSuccessfully("54.00€");
+            _cartPage.InsertNeededQuantityToCart("3",productName);
             _cartPage.AssertTotalAmountIsCorrect("174.00€");
             var cartPageTotalAmount = _cartPage.TotalAmout.Text;
             _cartPage.ProceedToCheckOutButton.Click();

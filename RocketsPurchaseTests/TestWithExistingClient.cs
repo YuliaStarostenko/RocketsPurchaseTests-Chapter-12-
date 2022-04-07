@@ -40,13 +40,13 @@ namespace RocketsPurchaseTests
         [Test]
         public void PurchaseARocketByNameWithAnExistingBuyer()
         {
-            _mainPage.AddARocketToTheCartByRocketName("Falcon 9");
+            var productName = "Falcon 9";
+            _mainPage.GoTo();
+            _mainPage.AddARocketToCart(productName);
             _cartPage.ApplyCoupon("happybirthday");
-            _cartPage.AssertCouponAppliedMessageAppears();
-            _cartPage.AssertTotalAmountIsCorrect("54.00€");
+            _cartPage.AssertCouponAppliedSuccessfully("54.00€");
             var cartPageTotalAmount = _cartPage.TotalAmout.Text;
             _cartPage.ProceedToCheckOutButton.Click();
-
             _checkoutPage.LoginWithExistingClient("test_email_address37@yahoo.com", "12345TestPassword");
             _checkoutPage.AssertTotalAmountOnCartPageAndCheckoutPageCoinside(cartPageTotalAmount, _checkoutPage.TotalAmount.Text);
             _checkoutPage.PlaceTheOrder();
@@ -55,10 +55,11 @@ namespace RocketsPurchaseTests
         [Test]
         public void OrderWasSuccesfullyAddedToMyAccountOfTheExistingClient()
         {
-            _mainPage.AddARocketToTheCartByRocketName("Falcon 9");
+            var productName = "Falcon 9";
+            _mainPage.GoTo();
+            _mainPage.AddARocketToCart(productName);
             _cartPage.ApplyCoupon("happybirthday");
-            _cartPage.AssertCouponAppliedMessageAppears();
-            _cartPage.AssertTotalAmountIsCorrect("54.00€");
+            _cartPage.AssertCouponAppliedSuccessfully("54.00€");
             var cartPageTotalAmount = _cartPage.TotalAmout.Text;
             _cartPage.ProceedToCheckOutButton.Click();
 
@@ -66,8 +67,8 @@ namespace RocketsPurchaseTests
             _checkoutPage.AssertTotalAmountOnCartPageAndCheckoutPageCoinside(cartPageTotalAmount, _checkoutPage.TotalAmount.Text);
             _checkoutPage.PlaceTheOrder();
             var orderNumberOnCheckOutPage = _checkoutPage.OrderNumber.Text;
-            _checkoutPage.NavMenuButtonByName("My account").Click();
-            _myAccountPage.AssertOrderIsInTheListAtMyAccount("#" + orderNumberOnCheckOutPage, _myAccountPage.GetOrderNumberInMyAccoun());
+            _mainPage.NavMenuButtonByName("My account").Click();
+            _myAccountPage.AssertOrderIsInTheListAtMyAccount("#" + orderNumberOnCheckOutPage, _myAccountPage.TakeLatestOrderNumberInMyAccount());
         }
     }
 }

@@ -18,10 +18,10 @@ namespace RocketsPurchaseTests.Pages.CartPage
             WaitForAjax();
         }
 
-        public void InsertNeededQuantityToCart(string quantity)
+        public void InsertNeededQuantityToCart(string quantity, string productName)
         {
-            QuantityInCartBox.Clear();
-            QuantityInCartBox.SendKeys(quantity);
+            QuantityInCartBox(productName).Clear();
+            QuantityInCartBox(productName).SendKeys(quantity);
             UpdateCartButton.Click();
             WaitForAjax();
         }

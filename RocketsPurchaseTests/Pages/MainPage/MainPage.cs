@@ -9,9 +9,8 @@ namespace RocketsPurchaseTests.Pages.MainPage
         }
         protected override string Url => "http://demos.bellatrix.solutions/";
 
-        public void AddARocketToTheCartByRocketName(string rocketName)
+        public void AddARocketToCart(string rocketName)
         {
-           GoTo();
            AddToCartButtonByproduct(rocketName).Click();
            ViewCartButton().Click();
         }

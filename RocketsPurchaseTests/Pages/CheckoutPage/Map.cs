@@ -32,10 +32,6 @@ namespace RocketsPurchaseTests.Pages.CheckoutPage
         public IWebElement LoginUsernameOrEmailBox => WaitAndFindElement(By.Id("username"));
         public IWebElement LoginPasswordBox => WaitAndFindElement(By.Id("password"));
         public IWebElement LoginButton => WaitAndFindElement(By.XPath("//button[text()='Login']"));
-        public IWebElement OrderNumber => WaitAndFindElement(By.XPath("//*[@id='post-7']/div/div/div/ul/li[1]/strong"));
-        public IWebElement NavMenuButtonByName(string buttonName)
-        {
-            return WaitAndFindElement(By.XPath($"//ul[@class='nav-menu']//a[text()='{buttonName}']"));
-        }    
+        public IWebElement OrderNumber => WaitAndFindElement(By.XPath("//*[@id='post-7']/div/div/div/ul/li[1]/strong"));    
     }
 }

@@ -14,6 +14,10 @@ namespace RocketsPurchaseTests.Pages.MainPage
         }
 
         public IWebElement ViewCartButton() => WaitAndFindElement(By.CssSelector("[title='View cart']"));
+        public IWebElement NavMenuButtonByName(string buttonName)
+        {
+            return WaitAndFindElement(By.XPath($"//ul[@class='nav-menu']//a[text()='{buttonName}']"));
+        }
 
     }
 }

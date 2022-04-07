@@ -10,10 +10,10 @@ namespace RocketsPurchaseTests.Pages.MyAccountPage
 
         protected override string Url => "http://demos.bellatrix.solutions/my-account/";
 
-        public string GetOrderNumberInMyAccoun()
+        public string TakeLatestOrderNumberInMyAccount()
         {
             OrdersLink.Click();
-            return LatestOrderNumber.Text;
+            return IOrderNumberorLatest().Text;
         }
     }
 }

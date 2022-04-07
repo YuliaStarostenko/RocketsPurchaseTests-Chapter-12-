@@ -13,5 +13,11 @@ namespace RocketsPurchaseTests.Pages.CartPage
         {
             Assert.AreEqual(totalAmountExpected, TotalAmout.Text);
         }
+
+        public void AssertCouponAppliedSuccessfully(string totalAmountExpected)
+        {
+            AssertCouponAppliedMessageAppears();
+            AssertTotalAmountIsCorrect(totalAmountExpected);
+        }
     }
 }
